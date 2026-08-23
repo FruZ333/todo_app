@@ -1,26 +1,26 @@
 package todo
 
-type list struct {
+type List struct {
 	tasks map[string]task
 }
 
-func NewList() *list {
-	return &list{
+func NewList() *List {
+	return &List{
 		tasks: make(map[string]task),
 	}
 }
 
-func (l *list) addTask(task task) {
+func (l *List) AddTask(task task) {
 	// создает новую задачу
 	l.tasks[task.title] = task
 }
 
-func (l *list) listTasks() map[string]task {
+func (l *List) ListTasks() map[string]task {
 	// выводит все задачи
 	return l.tasks
 }
 
-func (l *list) delTask(title string) string {
+func (l *List) DelTask(title string) string {
 	// удаляет задачу по заголовку
 	_, ok := l.tasks[title]
 	if !ok {
@@ -32,7 +32,7 @@ func (l *list) delTask(title string) string {
 	return ""
 }
 
-func (l *list) doneTask(title string) string {
+func (l *List) DoneTask(title string) string {
 	// меняет статус выполнения и создает время выполнения по заголовку задачи
 	task, ok := l.tasks[title]
 	if !ok {
