@@ -17,7 +17,7 @@ func printExit() {
 }
 
 func printAdd(title string) {
-	fmt.Println("Задача '" + title + "' помечена как выполненная")
+	fmt.Println("Задача '" + title + "' добавлена в список дел")
 	fmt.Println("")
 }
 
@@ -28,5 +28,10 @@ func printResult(result string) {
 
 func printTasks(tasks map[string]todo.Task) {
 	pp.Println("Список дел:", tasks)
+	fmt.Println("")
+}
+
+func printDone(title string) {
+	fmt.Println("Задача '" + title + "' помечена как выполненная")
 	fmt.Println("")
 }

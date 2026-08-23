@@ -38,7 +38,7 @@ func (s *scanner) Start() {
 				return
 			}
 
-			printResult(relust)			
+			printResult(relust)
 		}
 
 	}
@@ -63,6 +63,11 @@ func (s *scanner) process(inputString string) string {
 	if cmd == "list" {
 		return s.cmdList(fields)
 	}
+
+	if cmd == "done" {
+		return s.cmdDone(fields)
+	}
+
 }
 
 func (s *scanner) cmdAdd(fields []string) string {
@@ -72,16 +77,16 @@ func (s *scanner) cmdAdd(fields []string) string {
 
 	title := fields[1]
 	text := ""
-	
+
 	for i := 2; i < len(fields); i++ {
 		text += fields[i]
-		if i + 1 != len(fields) {
+		if i+1 != len(fields) {
 			text += " "
 		}
 	}
 
 	task := todo.NewTask(title, text)
-	
+
 	s.todoList.AddTask(task)
 
 	printAdd(title)
@@ -100,3 +105,19 @@ func (s *scanner) cmdList(fields []string) string {
 	return ""
 }
 
+func (s *scanner) cmdDone(fields []string) string {
+	if len(fields) != 2 {
+		return wrongArgs
+	}
+
+	title := fields[1]
+
+	task := s.todoList.DoneTask(title)
+	if task != "" {
+		return task
+	}
+
+	printDone(title)
+
+	return ""
+}
