@@ -38,6 +38,7 @@ func (s *scanner) Start() {
 				return
 			}
 
+			printResult(relust)			
 		}
 
 	}
@@ -56,7 +57,11 @@ func (s *scanner) process(inputString string) string {
 	}
 
 	if cmd == "add" {
+		return s.cmdAdd(fields)
+	}
 
+	if cmd == "list" {
+		return s.cmdList(fields)
 	}
 }
 
@@ -84,4 +89,14 @@ func (s *scanner) cmdAdd(fields []string) string {
 	return ""
 }
 
+func (s *scanner) cmdList(fields []string) string {
+	if len(fields) != 1 {
+		return wrongArgs
+	}
+
+	tasks := s.todoList.ListTasks()
+	printTasks(tasks)
+
+	return ""
+}
 

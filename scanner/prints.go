@@ -1,6 +1,11 @@
 package scanner
 
-import "fmt"
+import (
+	"fmt"
+	"todoapp/todo"
+
+	"github.com/k0kubun/pp"
+)
 
 func printComand() {
 	fmt.Print("Введите команду: ")
@@ -13,5 +18,15 @@ func printExit() {
 
 func printAdd(title string) {
 	fmt.Println("Задача '" + title + "' помечена как выполненная")
+	fmt.Println("")
+}
+
+func printResult(result string) {
+	fmt.Println("результат:", result)
+	fmt.Println("")
+}
+
+func printTasks(tasks map[string]todo.Task) {
+	pp.Println("Список дел:", tasks)
 	fmt.Println("")
 }

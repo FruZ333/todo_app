@@ -1,21 +1,21 @@
 package todo
 
 type List struct {
-	tasks map[string]task
+	tasks map[string]Task
 }
 
 func NewList() *List {
 	return &List{
-		tasks: make(map[string]task),
+		tasks: make(map[string]Task),
 	}
 }
 
-func (l *List) AddTask(task task) {
+func (l *List) AddTask(task Task) {
 	// создает новую задачу
 	l.tasks[task.title] = task
 }
 
-func (l *List) ListTasks() map[string]task {
+func (l *List) ListTasks() map[string]Task {
 	// выводит все задачи
 	return l.tasks
 }

@@ -2,7 +2,7 @@ package todo
 
 import "time"
 
-type task struct {
+type Task struct {
 	// структура задачи
 	title  string
 	text   string
@@ -12,9 +12,9 @@ type task struct {
 	doneAt    *time.Time // nil
 }
 
-func NewTask(title string, text string) task {
+func NewTask(title string, text string) Task {
 	// конструктор задачи 
-	return task{
+	return Task{
 		title:  title,
 		text:   text,
 		isDone: false,
@@ -24,7 +24,7 @@ func NewTask(title string, text string) task {
 	}
 }
 
-func (t *task) done() {
+func (t *Task) done() {
 	// меняет статус и добавляет время выполнения задачи	
 	t.isDone = true
 
