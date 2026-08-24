@@ -72,6 +72,10 @@ func (s *scanner) process(inputString string) string {
 		return s.cmdDel(fields)
 	}
 
+	if cmd == "help" {
+		return s.cmdHelp(fields)
+	}
+
 }
 
 func (s *scanner) cmdAdd(fields []string) string {
@@ -139,6 +143,16 @@ func (s *scanner) cmdDel(fields []string) string {
 	}
 
 	printDel(title)
+
+	return ""
+}
+
+func (s *scanner) cmdHelp(fields []string) string {
+	if len(fields) != 1 {
+		return wrongArgs
+	}
+
+	printHelp()
 
 	return ""
 }
