@@ -68,6 +68,10 @@ func (s *scanner) process(inputString string) string {
 		return s.cmdDone(fields)
 	}
 
+	if cmd == "del" {
+		return s.cmdDel(fields)
+	}
+
 }
 
 func (s *scanner) cmdAdd(fields []string) string {
@@ -118,6 +122,23 @@ func (s *scanner) cmdDone(fields []string) string {
 	}
 
 	printDone(title)
+
+	return ""
+}
+
+func (s *scanner) cmdDel(fields []string) string {
+	if len(fields) != 2 {
+		return wrongArgs
+	}
+
+	title := fields[1]
+
+	result := s.todoList.DelTask(title)
+	if result != "" {
+		return result
+	}
+
+	printDel(title)
 
 	return ""
 }

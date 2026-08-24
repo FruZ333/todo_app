@@ -35,3 +35,7 @@ func printDone(title string) {
 	fmt.Println("Задача '" + title + "' помечена как выполненная")
 	fmt.Println("")
 }
+
+func printDel(title string) {
+	fmt.Println("Задача '" + title + "' была удалена из списка задач")
+}
