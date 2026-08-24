@@ -8,8 +8,8 @@ type Task struct {
 	text   string
 	isDone bool
 
-	createdAt time.Time
-	doneAt    *time.Time // nil
+	CreatedAt time.Time
+	DoneAt    *time.Time // nil
 }
 
 func NewTask(title string, text string) Task {
@@ -19,8 +19,8 @@ func NewTask(title string, text string) Task {
 		text:   text,
 		isDone: false,
 
-		createdAt: time.Now(),
-		doneAt:    nil,
+		CreatedAt: time.Now(),
+		DoneAt:    nil,
 	}
 }
 
@@ -29,5 +29,5 @@ func (t *Task) done() {
 	t.isDone = true
 
 	now := time.Now()
-	t.doneAt = &now  
+	t.DoneAt = &now  
 }

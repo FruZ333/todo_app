@@ -76,6 +76,7 @@ func (s *scanner) process(inputString string) string {
 		return s.cmdHelp(fields)
 	}
 
+	return unknownCommand
 }
 
 func (s *scanner) cmdAdd(fields []string) string {
