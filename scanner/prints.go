@@ -64,3 +64,8 @@ func printHelp() {
 	fmt.Println("-- эта команда позволяет завершить выполнение программы")
 	fmt.Println("")
 }
+
+func printEvents(events []Event) {
+	pp.Println("События:", events)
+	fmt.Println("")
+}
